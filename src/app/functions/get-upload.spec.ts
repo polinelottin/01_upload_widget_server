@@ -3,7 +3,7 @@ import { isRight, unwrapEither } from '@/infra/shared/either'
 import { makeUpload } from '@/test/factories/make-upload'
 import dayjs from 'dayjs'
 import { describe, expect, it } from 'vitest'
-import { getUploads } from './get-image'
+import { getUploads } from './get-upload'
 
 describe('get image', () => {
 	it('should be able to get the uploads', async () => {
