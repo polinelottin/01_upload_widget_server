@@ -1,6 +1,6 @@
 # Upload Widget Server
 
-Este é um servidor backend para gerenciamento de uploads de arquivos, construído com Fastify, TypeScript e integração com AWS S3.
+Este é um servidor backend para gerenciamento de uploads de arquivos, construído com Fastify, TypeScript e integração com Cloudfare R2.
 
 ## 🚀 Tecnologias
 
@@ -8,9 +8,10 @@ Este é um servidor backend para gerenciamento de uploads de arquivos, construí
 - [TypeScript](https://www.typescriptlang.org/) - Superset JavaScript com tipagem estática
 - [Drizzle ORM](https://orm.drizzle.team/) - ORM TypeScript-first
 - [PostgreSQL](https://www.postgresql.org/) - Banco de dados relacional
-- [AWS S3](https://aws.amazon.com/s3/) - Armazenamento de objetos
 - [Zod](https://zod.dev/) - Validação de esquemas TypeScript
 - [Vitest](https://vitest.dev/) - Framework de testes
+- [Swagger](https://swagger.io/) - Documentação da API
+- [Biome](https://biomejs.dev/) - Linter e formatter
 
 ## 📦 Estrutura do Repositório
 
@@ -49,14 +50,14 @@ graph TD
 - Node.js (versão LTS recomendada)
 - pnpm (versão 10.12.1 ou superior)
 - Docker e Docker Compose
-- Conta AWS com acesso ao S3
+- Conta Cloudfare com acesso ao Object Storage
 
 ## 🔧 Configuração
 
 1. Clone o repositório:
 
 ```bash
-git clone [URL_DO_REPOSITÓRIO]
+git clone git@github.com:polinelottin/01_upload_widget_server.git
 cd 01_upload_widget_server
 ```
 
@@ -71,10 +72,11 @@ pnpm install
 
 ```env
 DATABASE_URL=
-AWS_ACCESS_KEY_ID=
-AWS_SECRET_ACCESS_KEY=
-AWS_BUCKET_NAME=
-AWS_REGION=
+CLOUDFARE_ACCOUNT_ID=
+CLOUDFARE_ACCESS_KEY_ID=
+CLOUDFARE_SECRET_ACCESS_KEY_ID=
+CLOUDFARE_BUCKET=
+CLOUDFARE_PUBLIC_URL=
 ```
 
 4. Inicie o banco de dados PostgreSQL usando Docker:
@@ -99,6 +101,8 @@ pnpm dev
 - `pnpm db:generate` - Gera as migrações do banco de dados
 - `pnpm db:migrate` - Executa as migrações do banco de dados
 - `pnpm db:studio` - Abre o Drizzle Studio para gerenciar o banco de dados
+- `pnpm db:migrate:test` - Executa as migrações do banco de dados para testes
+- `pnpm build` - Compila o projeto para produção
 
 ## 📁 Estrutura do Projeto
 
